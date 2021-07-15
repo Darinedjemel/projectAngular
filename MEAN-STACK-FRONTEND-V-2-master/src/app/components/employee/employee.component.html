@@ -1,0 +1,31 @@
+<p-card header="Employees list" > 
+<table class="table">
+    <thead>
+
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th> 
+        </tr>
+     </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.salary }}</td>
+            <td> 
+                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 " routerLink="edit/{{emp.id}}"> </button>
+        
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-warning"  (click)="confirmation(emp.id)" >  </button> 
+                <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+            </td>
+        </tr> 
+  
+    </tbody>
+</table>
+</p-card> 
+
+<p-toast position="top-right"></p-toast>

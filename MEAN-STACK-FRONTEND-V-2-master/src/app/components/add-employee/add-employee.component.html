@@ -1,0 +1,55 @@
+
+<p-card header="Add employee" > 
+<div class="container">
+    <form (ngSubmit)="insertData()" [formGroup]="form">
+
+
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" pInputText
+                 formControlName="name"
+                  class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                   placeholder="Enter Name"
+                    />
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required"> Name is required</div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" pInputText
+                 formControlName="email"
+                  class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                   placeholder="Enter Email"
+                   />
+                  
+                   <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+
+         
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="number" pInputText
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                formControlName="salary"
+                name="salary"
+                placeholder="Enter Salary">
+                <div *ngIf="submitted && f.salary.errors" class="invalid-feedback">
+                    <div *ngIf="f.salary.errors.required">Salary is required</div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <button pButton pRipple type="button" label="Add" class="p-button-raised p-button-success" icon="pi pi-check" (click)=" insertData()"></button>
+        </div>
+    </form>
+</div> 
+</p-card>

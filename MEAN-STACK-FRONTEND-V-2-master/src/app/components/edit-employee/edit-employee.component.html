@@ -1,0 +1,41 @@
+<p-card header="Update employee"  > 
+
+<div class="container">
+    <form (ngSubmit)="updateData()" [formGroup]="form">
+       
+       
+      
+        
+
+          <div  class="form-group  ">
+            <label for="name">Name</label>
+            <input type="text" pInputText class="form-control" formControlName="name">
+        </div>  
+     
+
+     
+      
+        
+           
+          <div  class="form-group  ">
+            <label for="email">Email</label>
+            <input type="eamil" pInputText  class="form-control" formControlName="email">
+        </div> 
+      
+
+        <div class="form-group   ">
+            <label for="salary">Salary</label>
+            <input type="text" pInputText class="form-control" formControlName="salary">
+        </div>
+       
+   
+        <div class="form-group  ">
+            <div class=" mt-4">
+            <button pButton pRipple type="button" label="Update" class="p-button-raised p-button-success" icon="pi pi-check" (click)="updateData()" ></button>
+        </div> 
+        </div>
+
+    </form>
+</div> 
+
+</p-card>

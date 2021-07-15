@@ -1,0 +1,83 @@
+
+
+        <p-card header="Companies list">   
+            <button type="button"  style="float:right;" mdbBtn  color="primary" size="sm" class="waves-effect mt-3"  (click)="open(content)" ><mdb-icon fas icon="plus-square" class="mr-2"
+                aria-hidden="true"></mdb-icon>Add Company</button>
+    <table class="table">        
+        <thead>    
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Company name</th>
+                <th scope="col">City</th>
+                <th scope="col">Employee name</th>   
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let com of companies; let i = index;">
+                <td>{{ i + 1 }}</td>
+                <td>{{ com.name }}</td>
+                <td>{{ com.city }}</td>
+                <td>{{ com.employee }}</td>
+            </tr>      
+        </tbody>
+    </table> 
+
+
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title"> Add Company</h4>
+   
+        </div>
+        <form (ngSubmit)="addCompany()" [formGroup]="form">
+            
+            <div class="form-group w-100 pl-2 pr-2">
+                <label>Name</label>
+                <input type="text" pInputText
+                    formControlName="name"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                    placeholder="Enter Name"/>
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required"> Name is required</div>
+                </div>
+            </div>
+        <div class="form-group w-100 pl-2 pr-2">
+            <label>City</label>
+            <input type="text" pInputText
+             formControlName="city"
+              class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+               placeholder="Enter City"
+                />
+            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                <div *ngIf="f.city.errors.required"> City is required</div>
+            </div>
+        </div>
+       
+
+     
+    <div class="form-group w-100 pl-2 pr-2">
+        <label for="id_employee">id_employee</label>
+        <input type="text" pInputText
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.id_employee.errors }"
+            formControlName="id_employee"
+            name="id_employee"
+            placeholder="Enter Id employee">
+            <div *ngIf="submitted && f.id_employee.errors" class="invalid-feedback">
+                <div *ngIf="f.id_employee.errors.required">Id employee is required</div>
+            </div>
+    </div>
+            </form>
+      
+        <div class="modal-footer">
+            <button mdbBtn  type="button"  size="sm"  color="default" mdbWavesEffect
+                (click)="modal.close('Save click') ; addCompany()">
+                <mdb-icon fas icon="save" class="mr-1"></mdb-icon>Save 
+            </button>
+        </div>
+    </ng-template>
+    </p-card> 
+    
+
